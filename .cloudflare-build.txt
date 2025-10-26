@@ -1,0 +1,11 @@
+# Cloudflare Pages ビルド設定
+
+## ビルドコマンド
+hugo --gc --minify
+
+## 出力ディレクトリ
+public
+
+## 環境変数
+HUGO_VERSION=0.123.7
+HUGO_ENV=production

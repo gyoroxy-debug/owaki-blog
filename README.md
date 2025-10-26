@@ -93,7 +93,7 @@ hugo server
 
 ```bash
 # 1. 静的ファイルをビルド
-hugo --cleanDestinationDir
+hugo --gc --minify
 
 # 2. Gitにコミット
 git add .
@@ -103,7 +103,76 @@ git commit -m "新しい記事を追加"
 git push origin main
 ```
 
-→ NetlifyがGitHubと連携していれば**自動でデプロイ**される
+→ **Cloudflare Pages**がGitHubと連携していれば**自動でデプロイ**される
+
+---
+
+## ☁️ Cloudflare Pages 初回セットアップ手順
+
+### 1. GitHubにリポジトリを作成
+
+1. GitHub（https://github.com）にログイン
+2. 「New repository」をクリック
+3. リポジトリ名: `owaki-blog`
+4. Public/Private どちらでもOK
+5. 「Create repository」
+
+### 2. ローカルからGitHubにプッシュ
+
+```bash
+cd /home/claude/owaki-blog
+
+# リモートリポジトリを追加
+git remote add origin https://github.com/あなたのユーザー名/owaki-blog.git
+
+# ブランチ名をmainに変更
+git branch -M main
+
+# プッシュ
+git push -u origin main
+```
+
+### 3. Cloudflare Pagesでプロジェクト作成
+
+1. Cloudflare Dashboard（https://dash.cloudflare.com/）にログイン
+2. 左メニューから「Workers & Pages」を選択
+3. 「Create application」→「Pages」→「Connect to Git」
+4. GitHubアカウントを連携
+5. リポジトリ「owaki-blog」を選択
+
+### 4. ビルド設定
+
+以下の設定を入力:
+
+- **フレームワークプリセット**: Hugo
+- **ビルドコマンド**: `hugo --gc --minify`
+- **ビルド出力ディレクトリ**: `public`
+- **環境変数**:
+  - `HUGO_VERSION` = `0.123.7`
+  - `HUGO_ENV` = `production`
+
+### 5. カスタムドメイン設定
+
+1. プロジェクトの「Custom domains」タブ
+2. 「Set up a custom domain」をクリック
+3. ドメイン入力: `blog.bokunosaiseikeikaku.icu`
+4. DNS設定を指示に従って更新
+
+---
+
+## 🔄 記事更新の流れ（セットアップ後）
+
+1. 記事ファイル（.md）を `content/posts/` に保存
+2. 画像ファイルを `static/images/` に保存
+3. ローカルでプレビュー: `hugo server`
+4. Git操作:
+   ```bash
+   git add .
+   git commit -m "記事追加: タイトル"
+   git push origin main
+   ```
+5. Cloudflare Pagesが**自動ビルド・デプロイ**（約1-2分）
+6. `https://blog.bokunosaiseikeikaku.icu` で公開完了
 
 ---
 
