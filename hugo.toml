@@ -1,0 +1,14 @@
+baseURL = 'https://blog.bokunosaiseikeikaku.icu/'
+languageCode = 'ja'
+title = '大脇貴仁のブログ - 借金時効7年の記録'
+theme = 'minimal-owaki'
+
+[params]
+  author = "大脇貴仁"
+  description = "借金800万円、時効に挑んだ7年間の実名・顔出し記録"
+  lpURL = "https://jikou.bokunosaiseikeikaku.icu/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
