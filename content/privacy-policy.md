@@ -1,5 +1,7 @@
 ---
+date: 2025-10-21
 title: "プライバシーポリシー"
+excludeFromLists: true
 slug: "privacy-policy"
 ---
 

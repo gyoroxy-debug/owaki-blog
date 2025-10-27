@@ -1,4 +1,7 @@
 ---
+date: 2025-10-21
+date: 2025-10-21
+excludeFromLists: true
 title: "特定商取引法に基づく表記"
 slug: "tokushoho"
 ---
