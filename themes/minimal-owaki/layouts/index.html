@@ -123,7 +123,7 @@
     </div>
     
     <ul class="articles">
-        {{ range where .Pages "Params.excludeFromLists" "ne" true }}
+        {{ range where .Site.RegularPages "Section" "posts" }}
         <li class="article">
             <div class="article-date">{{ .Date.Format "2006.01.02" }}</div>
             <h2 class="article-title">
