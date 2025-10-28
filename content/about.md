@@ -2,6 +2,7 @@
 title: "著者について"
 slug: "about"
 date: 2025-10-27
+layout: "single"
 excludeFromLists: true
 ---
 
