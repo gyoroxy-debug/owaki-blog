@@ -1,0 +1,2 @@
+{{ range .Site.RegularPages }}{{ .Params.slug }},{{ .Title }},{{ .Summary }}
+{{ end }}

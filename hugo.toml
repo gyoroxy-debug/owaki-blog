@@ -11,3 +11,11 @@ theme = 'minimal-owaki'
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
+
+[outputs]
+home = ["HTML", "RSS", "CSV"]
+
+[outputFormats.CSV]
+baseName = "article_list"
+isPlainText = true
+mediaType = "text/csv"
